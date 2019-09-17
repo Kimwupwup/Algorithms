@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\BOJ",
+    "\\programmers"
   ],
-  "SelectedNode": "\\kakao2018_1.cpp",
+  "SelectedNode": "\\programmers\\programmers_complete_search_1.cpp",
   "PreviewInSolutionExplorer": false
 }
