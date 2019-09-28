@@ -9,12 +9,12 @@ int solution(vector<int> arr) {
     sort(arr.begin(), arr.end(), greater<int>());
 
     int temp = arr[0];
-
+    int sum = 0;
     while (true) {
         bool isNot = false;
-        temp += temp;
+        sum += temp;
         for (int i = 1; i < arr.size(); i++) {
-            if (temp % arr[i] != 0) {
+            if (sum % arr[i] != 0) {
                 isNot = true;
                 break;
             }
@@ -22,6 +22,6 @@ int solution(vector<int> arr) {
         if (isNot) continue;
         else break;
     }
-    answer = temp;
+    answer = sum;
     return answer;
 }

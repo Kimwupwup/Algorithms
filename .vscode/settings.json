@@ -4,6 +4,10 @@
         "iostream": "cpp",
         "queue": "cpp",
         "deque": "cpp",
-        "xstring": "cpp"
+        "xstring": "cpp",
+        "xtree": "cpp",
+        "stack": "cpp",
+        "map": "cpp",
+        "algorithm": "cpp"
     }
 }
