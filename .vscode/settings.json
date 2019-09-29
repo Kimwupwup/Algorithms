@@ -8,6 +8,8 @@
         "xtree": "cpp",
         "stack": "cpp",
         "map": "cpp",
-        "algorithm": "cpp"
+        "algorithm": "cpp",
+        "utility": "cpp",
+        "string": "cpp"
     }
 }
