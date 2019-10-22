@@ -17,6 +17,18 @@ struct node {
     }
 };
 
+class node3 {
+    public:
+        int u;
+        int v;
+        int cost;
+
+    public:
+        bool operator<(node3& e) {
+            return cost < e.cost;
+        }
+};
+
 int find(int num) {
     if (num == visited[num]) return num;
 
@@ -28,12 +40,12 @@ int main() {
     int v, e;
     cin >> v >> e;
 
-    vector<node> vec;
+    vector<node3> vec;
 
     for (int i = 0; i < v; i++) visited[i] = i;
 
     for (int i = 0; i < e; i++) {
-        node n;
+        node3 n;
         cin >> n.u >> n.v >> n.cost;
         vec.push_back(n);
     }
