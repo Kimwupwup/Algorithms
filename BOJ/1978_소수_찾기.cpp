@@ -1,16 +1,17 @@
 #include <iostream>
 #include <vector>
+#include <memory.h>
 
 using namespace std;
 
-bool matrix[101];
+bool matrix[1000];
 
 int main()
 {
+    memset(matrix, true, sizeof(matrix));
     vector<int> v;
     int num;
     cin >> num;
-    matrix[1] = false;
 
     for (int i = 0; i < num; i++)
     {
@@ -19,16 +20,18 @@ int main()
         v.push_back(temp);
     }
 
-    for (int i = 2; i <= 100; i++)
+    matrix[1] = false;
+    for (int i = 2; i <= 1000; i++)
     {
         if (matrix[i] == true)
         {
-            for (int j = i * i; j <= 100; j += i)
+            for (int j = i * i; j <= 1000; j += i)
             {
                 matrix[j] = false;
             }
         }
     }
+
     int cnt = 0;
     for (int i = 0; i < v.size(); i++)
     {
