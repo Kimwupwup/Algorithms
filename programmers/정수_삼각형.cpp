@@ -8,7 +8,7 @@ using namespace std;
 int solution(vector<vector<int>> triangle) {
     int answer = 0;
     int height = triangle.size();
-    vector<vector<int>> cache(height);
+    vector<vector<int>> cache(height);      
     for (int i = 0; i < height; i++) {
         cache[i].resize(i + 1, 0);
     } 

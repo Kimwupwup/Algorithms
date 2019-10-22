@@ -16,8 +16,8 @@ void heapify(vector<int>& v, int n, int current) {
     int left_child = (current * 2) + 1;
     int right_child = (current * 2) + 2;
 
-    if (left_child < n && v[left_child] > v[parent]) parent = left_child;
-    if (right_child < n && v[right_child] > v[parent]) parent = right_child;
+    if (left_child < n && v[left_child] < v[parent]) parent = left_child;
+    if (right_child < n && v[right_child] < v[parent]) parent = right_child;
 
     if (parent != current) {
         swap(v[parent], v[current]);
