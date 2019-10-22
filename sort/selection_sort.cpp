@@ -13,7 +13,6 @@ void selection_sort(vector<int>& v) {
                 idx = j;
             }
         }
-        
         int temp = v[i];
         v[i] = v[idx];
         v[idx] = temp;

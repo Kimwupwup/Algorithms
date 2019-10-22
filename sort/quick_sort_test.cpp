@@ -25,7 +25,7 @@ void quick_sort(int left, int right, vector<int>& v) {
     //     quick_sort(j + 1, right, v);
     // }
 
-    if (left >= right) return;
+    if (left > right) return;
     int pivot = v[(left + right) / 2];
     int low = left;
     int high = right;
@@ -45,7 +45,7 @@ void quick_sort(int left, int right, vector<int>& v) {
 }
 
 int main() {
-    vector<int> v = {5, 3, 2, 1, 6, 4, 7, 10, 8, 9};
+    vector<int> v = {5, 3, 2, 1, 9, 4, 7, 10, 8, 6};
     quick_sort(0, v.size() - 1, v);
     for (int a : v) cout << a << " ";
 }
