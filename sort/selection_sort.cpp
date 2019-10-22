@@ -6,12 +6,10 @@ using namespace std;
 void selection_sort(vector<int>& v) {
     
     for (int i = 0; i < v.size(); i++) {
-        int mini = 987654321;
-        int idx = 0 ;
+        int idx = i ;
 
-        for (int j = i; j < v.size(); j++) {
-            if (mini > v[j]) {
-                mini = v[j];
+        for (int j = i + 1; j < v.size(); j++) {
+            if (v[idx] > v[j]) {
                 idx = j;
             }
         }
