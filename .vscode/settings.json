@@ -11,6 +11,8 @@
         "algorithm": "cpp",
         "utility": "cpp",
         "string": "cpp",
-        "cstdlib": "cpp"
+        "cstdlib": "cpp",
+        "set": "cpp",
+        "iosfwd": "cpp"
     }
 }
