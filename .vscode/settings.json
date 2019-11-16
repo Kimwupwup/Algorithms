@@ -45,5 +45,11 @@
         "xstddef": "cpp",
         "xtr1common": "cpp",
         "xutility": "cpp"
+    },
+    "files.exclude": {
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true
     }
 }
