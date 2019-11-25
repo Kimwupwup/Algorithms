@@ -51,5 +51,6 @@
         "**/.project": true,
         "**/.settings": true,
         "**/.factorypath": true
-    }
+    },
+    "powermode.enabled": true
 }
