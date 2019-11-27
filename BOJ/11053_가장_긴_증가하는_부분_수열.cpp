@@ -1,7 +1,7 @@
 #include <iostream>
 #include <algorithm>
 using namespace std;
-const int MAX = 1001;
+const int MAX = 1000001;
 int matrix[MAX];
 int cache[MAX];
 int n;
