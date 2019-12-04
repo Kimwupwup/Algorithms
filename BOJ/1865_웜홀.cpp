@@ -6,7 +6,8 @@
  * Bellman-ford
  * M, W 에 대해서 모두 실행하고
  * 마지막에 확인할 때, 변화가 있으면 음수 루프가 존재한다는 의미이다.
- * **/
+ **/
+
 #include <iostream>
 #include <vector>
 #include <algorithm>
