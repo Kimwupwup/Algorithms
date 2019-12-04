@@ -5,6 +5,7 @@
  * TODO:
  * 이진 탐색 트리의 전위 순회는 트리에 노드를 넣는 순서와 동일하므로
  * 순서대로 노드를 넣고 그 토대로 후위 순회를 진행하면 된다.
+ * 메모리 및 입력 부분을 신경써야 한다.
  * */
 
 #include <iostream>
@@ -12,21 +13,18 @@
 
 using namespace std;
 
-const int MAX = 2000000;
+struct node {
+    int data = 0;
+    node *left = NULL;
+    node *right = NULL;
+};
 
-vector<pair<int, int>> tree(MAX, {0, 0});
-int matrix[MAX];
-
-void post_order(int node) {
-    int left = tree[node].first;
-    int right = tree[node].second;
-    
-    if (left == 0 && right == 0)
-        return;
-
-    post_order(left);
-    post_order(right);
-    cout << node << "\n";
+void post_order(node *tmp) {
+    if (tmp->left != NULL)
+        post_order(tmp->left);
+    if (tmp->right != NULL)
+        post_order(tmp->right);
+    cout << tmp->data << "\n";
 }
 
 int main() {
@@ -34,33 +32,35 @@ int main() {
     ios::sync_with_stdio(false);
 
     int temp;
-    int root;
+    cin >> temp;
+    node *root = new node;
+    root->data = temp;
 
-    scanf("%d", &root);
-
-    // 입력이 끝날 때까지.
-    while (scanf("%d", &temp) != EOF) {      
-        int cur = root;
+    while (cin >> temp) {
+        node *parent = root;
+        node *tmp = new node;
+        tmp->data = temp;        
 
         while (true) {
-            if (cur < temp) {
-                if (tree[cur].second != 0)
-                    cur = tree[cur].second;
-                else  {
-                    tree[cur].second = temp;
-                    break;
-                }                    
-            }                
-            else if (cur > temp) {
-                if (tree[cur].first != 0)
-                    cur = tree[cur].first;
+            if (parent->data > tmp->data) {
+                if (parent->left != NULL) 
+                    parent = parent->left;                
                 else {
-                    tree[cur].first = temp;
+                    parent->left = tmp;
                     break;
                 }                    
-            }                
+            }
+            else {
+                if (parent->right != NULL) 
+                    parent = parent->right;                
+                else {
+                    parent->right = tmp;
+                    break;
+                }
+            }
         }
     }
+
     post_order(root);
 
     return 0;
