@@ -1,4 +1,5 @@
 /**
+ * http://codeforces.com/contest/1272
  * Codefores round #605 20191212
  * B. Snow Walking Robot
  * 

@@ -1,4 +1,5 @@
 /**
+ * http://codeforces.com/contest/1272
  * Codeforces round #605 20191212
  * C. Yet Another Broken Keyboard
  * 
