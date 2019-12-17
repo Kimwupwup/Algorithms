@@ -29,6 +29,7 @@ int main() {
         s.clear();
         int ret = 0;
 
+
         int n;
         cin >> n;       
 
