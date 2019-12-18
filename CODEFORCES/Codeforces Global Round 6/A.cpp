@@ -2,7 +2,7 @@
 
  * Codeforces Global Round 6
  * A. Competitive Programmer
- * 
+ *
  * */
 
 #include <iostream>
@@ -16,16 +16,16 @@ using namespace std;
 int main() {
     cin.tie(NULL);
     ios::sync_with_stdio(false);
-
+    
     int T;
     cin >> T;
-
+    
     while (T--) {
         string str;
         bool isFound = false;
 
         cin >> str;
-        
+
         int ret = 0;
         int isZero = 0;
         bool isDouble = false;
@@ -46,7 +46,7 @@ int main() {
             cout << "red\n";
             continue;
         }
-        
+
         if (ret % 3 == 0) {
             if (isZero) {
                 if (isDouble || isZero > 1) {
@@ -56,7 +56,7 @@ int main() {
             }
         }
         cout << "cyan\n";
-        
+
     }
     return 0;
 }

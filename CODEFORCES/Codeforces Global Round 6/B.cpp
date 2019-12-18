@@ -2,7 +2,7 @@
 
  * Codeforces Global Round 6
  * B. Dice Tower
- * 
+ *
  * */
 
 #include <iostream>
@@ -14,7 +14,6 @@ using namespace std;
 int main() {
     cin.tie(NULL);
     ios::sync_with_stdio(false);
-
     int T;
     cin >> T;
     while (T--) {
@@ -26,11 +25,11 @@ int main() {
         else {
             if (n % 14 <= 6 && n % 14 >= 1)
             cout << "YES\n";
-        else 
+        else
             cout << "NO\n";
         }
-        
-        
+
+
     }
 
     return 0;
