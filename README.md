@@ -1,3 +1,7 @@
 # Algorithms
 **Algorithms test** 준비
-Programmers, 백준 위주로 공부진행
+
+Programmers
+백준 - wuppu13579
+SW Expert - Wuppu
+Codeforces - wuppu
