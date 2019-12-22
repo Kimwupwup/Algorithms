@@ -3,13 +3,14 @@
     "tasks": [
         {
             "label": "g++ compile",
+            "type":"shell",
             "command": "g++",
             "options": {
-                "cd": "${fileDirname}"
+                "cwd": "${fileDirname}"
             },
             "args": [
                 "-o",
-                "${fileBasenameNoExtension}",
+                "${fileBasenameNoExtension}.exe",
                 "${file}"
             ],
             "group":{
@@ -28,9 +29,10 @@
 
         {
             "label": "cpp exec",
-            "command": "./${fileBasenameNoExtension}",
+            "type":"shell",
+            "command": "./${fileBasenameNoExtension}.exe",
             "options": {
-                "cd": "${fileDirname}"
+                "cwd": "${fileDirname}"
             },
             "group":{
                 "kind": "test",
