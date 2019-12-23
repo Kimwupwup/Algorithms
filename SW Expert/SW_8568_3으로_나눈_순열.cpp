@@ -46,7 +46,7 @@ int main() {
         for (int i = 0; i < n; i++) {
             if (v[i] % 3 != (i + 1) % 3)
                 ret++;
-        }
+        } 
         cnt += (ret / 3) * 2;
         cout << "#" << t << " " << cnt << "\n";
     }
