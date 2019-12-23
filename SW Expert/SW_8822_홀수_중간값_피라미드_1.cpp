@@ -15,7 +15,7 @@ int main()  {
 
     int T;
     cin >> T;
-    for (int t = 1; t <= T; t++) {
+    for (int t = 1; t <= T; t++) { 
         int n, x;
         cin >> n >> x;
         if (x == 1 || x == 2 * n - 1)
