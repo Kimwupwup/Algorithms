@@ -5,15 +5,7 @@
  * 
  * */
 
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <string>
-#include <queue>
-#include <stack>
-#include <cstring>
-#include <map>
-
+#include <bits/stdc++.h>
 using namespace std;
 
 const int MAX = 2 * 500000;
@@ -54,8 +46,8 @@ int main() {
     for (int i = 0; i < zeros.size(); i++) {
         if (noCall[i] == zeros[i]) {
             int temp = noCall[i];
-            noCall[i] = noCall[(i + 1) % (zeros.size() - 1)];
-            noCall[(i + 1) % (zeros.size() - 1)] = temp;
+            noCall[i] = noCall[(i + 1) % zeros.size()];
+            noCall[(i + 1) % zeros.size()] = temp;
         }
     }
 
