@@ -19,7 +19,7 @@ int main() {
     cin >> n;
     for (int i = 1; i <= n; i++) 
         for (int j = 1; j <= n; j++)
-            matrix[i][j] = 1;
+            cin >> matrix[i][j];
     
     dp[1][1] = 1;
     for (int i = 1; i <= n; i++) {
