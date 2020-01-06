@@ -45,7 +45,8 @@
         "xstddef": "cpp",
         "xtr1common": "cpp",
         "xutility": "cpp",
-        "*.tcc": "cpp"
+        "*.tcc": "cpp",
+        "bitset": "cpp"
     },
     "files.exclude": {
         "**/.classpath": true,
