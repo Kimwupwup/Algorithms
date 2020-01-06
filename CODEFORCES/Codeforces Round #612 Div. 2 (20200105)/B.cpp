@@ -6,53 +6,54 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int n, k;
 vector<string> v;
-vector<int> sset(3);
+set<string> s;
+int n, m;
 
-bool chk(int a, int b, int c) {
-    bool good = true;
-    for (int i = 0; i < k; i++) {
-        if (v[a][i] == v[b][i] && v[a][i] == v[c][i] && v[b][i] == v[c][i]) {
-            good = true;
-        } else if (v[a][i] != v[b][i] && v[a][i] != v[c][i] && v[b][0] != v[c][0]) {
-            good = true;
-        } else {
-            return false;
-        }
+char make_string(char a, char b) {
+    if (a < b) {
+        char temp = a;
+        a = b;
+        b = temp;
     }
-    return true;
+    if (a == 'S' && b == 'S') 
+        return 'S';
+    if (a == 'S' && b == 'E')
+        return 'T';
+    if (a == 'T' && b == 'S')
+        return 'E';
+    if (a == 'T' && b == 'E')
+        return 'S';
+    if (a == 'T' && b == 'T')
+        return 'T';
+    if (a == 'E' && b == 'E')
+        return 'E';
 }
 
 int main() {
     cin.tie(nullptr);
     ios::sync_with_stdio(false);
 
-    
-    cin >> n >> k;
+    cin >> n >> m;
     for (int i = 0; i < n; i++) {
         string str;
         cin >> str;
         v.push_back(str);
+        s.insert(str);
     }
-    sort(v.begin(), v.end());
     int ret = 0;
-    for (int i = 0; i < n - 2; i++) {
-        for (int j = i + 1; j < n - 1; j++) {
-            for (int l = j + 1; l < n; l++) {
-                if (v[i][0] == v[j][0] && v[j][0] != v[l][0])
-                    break;
-                if (v[i][0] == v[j][0] && v[i][0] == v[l][0] && v[j][0] == v[l][0]) {
-                    if (chk(i, j, l))
-                        ret++;
-                } else if (v[i][0] != v[j][0] && v[i][0] != v[l][0] && v[j][0] != v[l][0]) {
-                    if (chk(i, j, l))
-                        ret++;
-                }
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = i + 1; j < n; j++) {
+            string temp = "";
+            for (int k = 0; k < m; k++) {
+                temp.push_back(make_string(v[i][k], v[j][k]));
+            }
+            if (s.find(temp) != s.end()) {
+                ret++;
             }
         }
     }
-    
-    cout << ret << "\n";
+
+    cout << (ret / 3) << "\n";
     return 0;
 }
