@@ -1,28 +1,26 @@
+/**
+ * 백준 1629번 - 곱셈
+ * 
+ * TODO:
+ * 분할정복
+ * */
 #include <iostream>
 using namespace std;
 
-int a, b, c;
+long long partition(int a, int b, int c) {
+    if (b == 1) return a;
+    long long tmp = partition(a, b / 2, c) % c;
 
-long long partition(int ta, int tb, int tc)
-{
-    if (tb == 1)
-        return ta;
-    else
-    {
-        long long temp = partition(ta, tb / 2, tc) % tc;
-        if (tb % 2 == 1)
-            return ((temp * temp) % tc * ta) % tc;
-        else
-            return (temp * temp) % tc;
-    }
+    if (b % 2) return ((tmp * tmp) % c * a) % c;
+    else return (tmp * tmp) % c;
 }
 
-int main()
-{
-    cin.tie(NULL);
+int main() {
+    cin.tie(nullptr);
     ios::sync_with_stdio(false);
 
+    int a, b, c;
     cin >> a >> b >> c;
-    cout << partition(a % c, b, c) << endl;
+    cout << partition(a % c, b, c) << "\n";
     return 0;
 }

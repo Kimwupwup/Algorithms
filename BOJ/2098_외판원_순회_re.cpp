@@ -12,7 +12,6 @@
  * dp[i][j] : i는 현재 마을이며, j는 지금까지 방문했던 마을들이다.
  * dp[i][j]는 지금까지의 비용이다.
  * */
-
 #include <iostream>
 #include <cstring>
 #include <algorithm>
@@ -21,55 +20,40 @@ using namespace std;
 
 const int INF = 987654321;
 const int MAX = 16;
-
 int n;
 int matrix[MAX][MAX];
 int dp[MAX][1 << MAX];
 
-int TSP(int current, int visited) {
-    
-    // 다 방문했다는 소리.
-    if (visited == (1 << n) - 1) {
-        
-        // 현재 마을에서 0번 마을로 돌아갈 수 있어야 한다.
-        if (matrix[current][0] != 0) {
-            return matrix[current][0];
+int solve(int idx, int mask) {
+    if (mask == (1 << n) - 1) {
+        if (matrix[idx][0] != 0) {
+            return matrix[idx][0];
         }
         return INF;
     }
 
-    int &ret = dp[current][visited];
+    int &ret = dp[idx][mask];
     if (ret != -1)
         return ret;
     
     ret = INF;
-
     for (int i = 0; i < n; i++) {
-
-        // 다음 방문할 마을을 방문했거나, 갈 수 없는 상황이면 넘긴다.
-        if (visited & (1 << i) || matrix[current][i] == 0) 
+        if (mask & (1 << i) || matrix[idx][i] == 0)
             continue;
-        
-        // 그 다음을 계속 진행한다.
-        int next = matrix[current][i] + TSP(i, visited + (1 << i));
-
-        // 진행 결과와 기존 값중 작은 값을 채택한다.
-        ret = min(ret, next);
+        int next = matrix[idx][i] + solve(i, mask | (1 << i));
+        ret = min(next, ret);
     }
     return ret;
 }
 
 int main() {
-
-    cin.tie(NULL);
+    cin.tie(nullptr);
     ios::sync_with_stdio(false);
 
     cin >> n;
     for (int i = 0; i < n; i++)
         for (int j = 0; j < n; j++)
             cin >> matrix[i][j];
-    
     memset(dp, -1, sizeof(dp));
-    cout << TSP(0, (1 << 0)) << endl;
-    return 0;
+    cout << solve(0, (1 << 0)) << "\n";
 }
