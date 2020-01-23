@@ -6,59 +6,44 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-vector<vector<int>> v;
-vector<pair<int, int>> ret_v; 
-set<pair<int, int>> visited;
-int further;
-int ret = 0;
+const int MAX = 2e5 + 1;
+int visited[MAX];
+int ret_vertex[3];
+int temp_vertex;
+int main_cnt = 0, sub_cnt = 0;
+vector<vector<int>> matrix;
+int n;
 
-void BFS(int node) {
-    visited.clear();
-    queue<int> q;
-    q.push(node);
+void DFS(int cur, int cnt, int prev) {
+    if (main_cnt <= cnt) {
+        main_cnt = cnt;
+        temp_vertex = cur;
+    }
 
-    while (!q.empty()) {
-        int current = q.front();
-        q.pop();
-        further = current;
-        for (int i = 0; i < v[current].size(); i++) {
-            int f = current;
-            int s = v[current][i];
-            if (f > s) {
-                int temp = f;
-                f = s;
-                s = temp;
-            }
-            if (visited.find({f, s}) == visited.end()) {
-                q.push(f == current ? s : f);
-                visited.insert({f, s});
-            }
-        }
+    for (int a : matrix[cur]) {
+        if (a == prev) continue;
+        DFS(a, cnt + 1, cur);
     }
 }
 
-void DFS(int node, int cnt) {
-    if (ret < cnt) {
-        ret = cnt;
-        further = node;
-        v.clear();
-        
-    }        
-    
-    for (int i = 0; i < v[node].size(); i++) {
-        int f = node;
-        int s = v[node][i];
+void search(int cur, int cnt, int prev) {
+    visited[cur] = cnt;
+    for (int a : matrix[cur]) {
+        if (a == prev) continue;
+        search(a, cnt + 1, cur);
+    }
+}
 
-        if (f > s) {
-            int temp = f;
-            f = s;
-            s = temp;
-        }
-        if (visited.find({f, s}) == visited.end()) {
-            visited.insert({f, s});
-            DFS(v[node][i], cnt + 1);
-            visited.erase({f, s});
-        }
+void search2(int cur, int cnt, int prev) {
+    if (sub_cnt < cnt) {
+        sub_cnt = cnt;
+        temp_vertex = cur;
+    }
+
+    for (int a : matrix[cur]) {
+        if (a == prev) continue;
+        if (visited[cur] > visited[a]) search2(a, 0, cur);
+        else search2(a, cnt + 1, cur);
     }
 }
 
@@ -66,22 +51,37 @@ int main() {
     cin.tie(nullptr);
     ios::sync_with_stdio(false);
 
-    int n;
     cin >> n;
-    v.resize(n + 1);
+    matrix.resize(n + 1);
     for (int i = 0; i < n - 1; i++) {
-        int a, b;
-        cin >> a >> b;
-        v[a].push_back(b);
-        v[b].push_back(a);
+        int u, v;
+        cin >> u >> v;
+        matrix[u].push_back(v);
+        matrix[v].push_back(u);
     }
+
+    DFS(1, 0, -1);
+    ret_vertex[0] = temp_vertex;
+
+    DFS(temp_vertex, 0, -1);
+    ret_vertex[1] = temp_vertex;
+
+    search(ret_vertex[0], 0, -1);
+    search2(ret_vertex[1], 0, -1);
+    ret_vertex[2] = temp_vertex;
     
-    BFS(2);
-    cout << further << "\n";
-
-    visited.clear();
-    DFS(further, 0);
-    cout << further << " : " << ret << "\n";
-
+    cout << (main_cnt + sub_cnt) << "\n";
+    if (temp_vertex == ret_vertex[0]) {
+        for (int i = 1; i <= n; i++) {
+            if (ret_vertex[0] != i && ret_vertex[1] != i) {
+                ret_vertex[2] = i;
+                break;
+            }
+        }
+    }
+    for (int a : ret_vertex) {
+        cout << a << " ";
+    }
+    cout << "\n";
     return 0;
 }
