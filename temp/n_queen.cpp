@@ -1,9 +1,7 @@
 /**
  * 백준 9663번 - N-Queen
- * 백트래킹
  * 
  * */
-
 #include <bits/stdc++.h>
 
 using namespace std;
