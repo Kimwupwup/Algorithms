@@ -1,5 +1,7 @@
 /**
  * 백준 11404번 - 플로이드
+ * 
+ * TODO:
  * 방향성 그래프
  * 도시 i 에서 도시 j 로 가는 최소 비용을 구하여야 하므로,
  * 플로이드 워셜 알고리즘을 사용해야 한다.
@@ -11,7 +13,7 @@
 
 using namespace std;
 
-const int INF = 100001;
+const int INF = 987654321;
 int matrix[101][101];
 
 int main()
