@@ -3,7 +3,7 @@
  * 
  * TODO:
  * queue, 위상 정렬(topological sort)
- * 위상 정렬: 진입 차수를 사용하여 0 일 때만 처리한다.
+ * 위상 정렬: 진입 차수를 사용하여 0 일 때만 처리한다.x
  * */
 #include <iostream>
 #include <vector>
